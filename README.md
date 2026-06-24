@@ -1,12 +1,6 @@
 # 詩コミュニティサイト
 
-`/Users/kimura/Desktop/授業/2年/国語Ⅰ/詩_コミュニティサイト` に置いた、Firebase 向けの詩コミュニティサイトです。
-
-## 先に結論
-
-- 今すぐ無料で動的サイトを公開するなら、`Firebase Hosting + Cloud Firestore + Firebase Authentication` が現実的です。
-- この実装は Firebase の設定が入っていればそのまま公開できます。
-- `config.js` が未設定の間は `localStorage` を使うデモモードで動きます。
+Firebase 向けの詩コミュニティサイトです。
 
 ## 実装済み機能
 
@@ -41,7 +35,7 @@
 1. このフォルダでローカルサーバを起動
 
 ```bash
-cd "/Users/kimura/Desktop/授業/2年/国語Ⅰ/詩_コミュニティサイト"
+cd （ディレクトリ）
 python3 -m http.server 8000
 ```
 
