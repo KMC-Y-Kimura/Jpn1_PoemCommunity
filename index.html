@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>余白に詩を</title>
+    <meta
+      name="description"
+      content="Firebase Hosting と Firestore で無料公開できる、詩の投稿と交流のためのコミュニティサイト"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css?v=20260624-5">
+  </head>
+  <body data-page="home">
+    <div class="site-shell">
+      <header class="hero">
+        <div class="hero__veil hero__veil--left"></div>
+        <div class="hero__veil hero__veil--right"></div>
+        <div class="hero__content">
+          <p class="eyebrow">Poetry Community</p>
+          <h1 id="site-name">余白に詩を</h1>
+          <p id="site-tagline" class="hero__tagline">
+            言葉を置いて、誰かの余白に届かせるための詩のコミュニティ
+          </p>
+          <div class="hero__actions">
+            <a class="button button--ghost" href="./browse.html">作品を探す</a>
+            <a class="button" href="./compose.html">詩を書く</a>
+          </div>
+        </div>
+        <aside class="status-panel">
+          <div class="status-panel__row">
+            <span>作品数</span>
+            <strong id="poem-count">0</strong>
+          </div>
+          <div class="status-panel__row">
+            <span>詩人</span>
+            <strong id="author-count">0</strong>
+          </div>
+          <div class="status-panel__row">
+            <span>コメント</span>
+            <strong id="comment-count">0</strong>
+          </div>
+        </aside>
+      </header>
+
+      <nav class="topbar">
+        <div class="topbar__brand">
+          <p class="topbar__kicker">Community</p>
+          <strong>Poetry Board</strong>
+        </div>
+        <div class="topbar__links">
+          <a class="link-button link-button--active" href="./index.html">ホーム</a>
+          <a class="link-button" href="./browse.html">探す</a>
+          <a class="link-button" href="./compose.html">投稿</a>
+          <a class="link-button" href="./mypage.html">マイページ</a>
+        </div>
+        <div id="auth-actions" class="auth-actions">
+          <button class="button button--ghost" data-action="open-auth" type="button">ログイン</button>
+        </div>
+      </nav>
+
+      <main class="layout layout--home">
+        <section class="main-panel">
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Fresh Picks</p>
+                <h2>新着の詩</h2>
+              </div>
+              <a class="section-link" href="./browse.html?sort=new">一覧を見る</a>
+            </div>
+            <div id="home-new-grid" class="poem-grid">
+              <div class="empty-state">新着作品を読み込んでいます...</div>
+            </div>
+          </section>
+
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Popular Picks</p>
+                <h2>人気の詩</h2>
+              </div>
+              <a class="section-link" href="./browse.html?sort=popular">人気順で見る</a>
+            </div>
+            <div id="home-popular-grid" class="poem-grid">
+              <div class="empty-state">人気作品を読み込んでいます...</div>
+            </div>
+          </section>
+        </section>
+
+        <aside class="side-panel">
+          <section id="home-account-card" class="section-card">
+            <p class="section-copy">アカウント情報を読み込んでいます...</p>
+          </section>
+
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Shortcuts</p>
+                <h2>移動</h2>
+              </div>
+            </div>
+            <div class="shortcut-list">
+              <a class="shortcut-card" href="./browse.html">
+                <strong>詩を探す</strong>
+                <span>検索・タグ・ジャンルで作品を探すページ</span>
+              </a>
+              <a class="shortcut-card" href="./compose.html">
+                <strong>詩を投稿する</strong>
+                <span>専用フォームで新規投稿や編集を行うページ</span>
+              </a>
+              <a class="shortcut-card" href="./mypage.html">
+                <strong>マイページ</strong>
+                <span>プロフィール編集と自分の作品一覧を見るページ</span>
+              </a>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="poem-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-poem-modal"></div>
+      <div class="modal__panel">
+        <button class="icon-button" data-action="close-poem-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="poem-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-auth-modal"></div>
+      <div class="modal__panel modal__panel--narrow">
+        <button class="icon-button" data-action="close-auth-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="auth-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack"></div>
+
+    <script type="module" src="js/app.js?v=20260624-9"></script>
+  </body>
+</html>

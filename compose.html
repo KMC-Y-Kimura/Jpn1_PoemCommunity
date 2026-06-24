@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>詩を投稿する | 余白に詩を</title>
+    <meta
+      name="description"
+      content="詩を投稿するための専用ページ"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css?v=20260624-5">
+  </head>
+  <body data-page="compose">
+    <div class="site-shell">
+      <header class="page-hero">
+        <p class="eyebrow">Compose</p>
+        <h1 id="site-name">詩を投稿する</h1>
+        <p id="site-tagline" class="hero__tagline">
+          投稿と編集だけに集中するための専用ページです。
+        </p>
+      </header>
+
+      <nav class="topbar">
+        <div class="topbar__brand">
+          <p class="topbar__kicker">Community</p>
+          <strong>Poetry Board</strong>
+        </div>
+        <div class="topbar__links">
+          <a class="link-button" href="./index.html">ホーム</a>
+          <a class="link-button" href="./browse.html">探す</a>
+          <a class="link-button link-button--active" href="./compose.html">投稿</a>
+          <a class="link-button" href="./mypage.html">マイページ</a>
+        </div>
+        <div id="auth-actions" class="auth-actions">
+          <button class="button button--ghost" data-action="open-auth" type="button">ログイン</button>
+        </div>
+      </nav>
+
+      <main class="layout">
+        <section class="main-panel">
+          <section id="compose-card" class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Compose</p>
+                <h2 id="compose-heading">新しい詩を投稿</h2>
+              </div>
+              <button id="cancel-edit-button" class="link-button" data-action="cancel-edit" hidden>
+                編集をやめる
+              </button>
+            </div>
+            <p id="compose-status" class="section-copy">ログインすると作品を投稿できます。</p>
+            <form id="compose-form" class="stack-form">
+              <label class="field">
+                <span>題名</span>
+                <input id="poem-title" name="title" type="text" maxlength="80" required>
+              </label>
+              <label class="field">
+                <span>ジャンル</span>
+                <select id="poem-genre" name="genre">
+                  <option value="自由詩">自由詩</option>
+                  <option value="叙情詩">叙情詩</option>
+                  <option value="散文詩">散文詩</option>
+                  <option value="短詩">短詩</option>
+                  <option value="その他">その他</option>
+                </select>
+              </label>
+              <div class="field">
+                <span>タグ</span>
+                <div class="tag-editor">
+                  <div id="compose-tag-list" class="tag-editor__list"></div>
+                  <input id="poem-tag-input" class="tag-editor__input" type="text" maxlength="20" placeholder="タグを入力して Enter">
+                </div>
+                <input id="poem-tags" name="tags" type="hidden">
+                <p class="muted-note">Enterキーでタグ化します。最大8個までです。</p>
+                <div id="compose-tag-suggestions" class="tag-cloud"></div>
+              </div>
+              <label class="field">
+                <span>本文</span>
+                <textarea id="poem-body" name="body" rows="14" maxlength="2000" placeholder="10文字以上 2000文字以内" required></textarea>
+              </label>
+              <div class="form-actions">
+                <button id="submit-poem-button" class="button" type="submit">投稿する</button>
+                <button class="button button--ghost" data-action="open-auth" type="button">ログイン</button>
+              </div>
+            </form>
+          </section>
+        </section>
+
+        <aside class="side-panel">
+          <section id="compose-account-card" class="section-card">
+            <p class="section-copy">アカウント情報を読み込んでいます...</p>
+          </section>
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Guide</p>
+                <h2>投稿の目安</h2>
+              </div>
+            </div>
+            <div class="guideline-list">
+              <p>1. 題名は短めにし、本文は10文字以上にしてください。</p>
+              <p>2. タグは8個までです。検索されやすい言葉を入れると見つけやすくなります。</p>
+              <p>3. 編集は自分の作品だけ可能です。</p>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="poem-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-poem-modal"></div>
+      <div class="modal__panel">
+        <button class="icon-button" data-action="close-poem-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="poem-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-auth-modal"></div>
+      <div class="modal__panel modal__panel--narrow">
+        <button class="icon-button" data-action="close-auth-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="auth-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack"></div>
+
+    <script type="module" src="js/app.js?v=20260624-8"></script>
+  </body>
+</html>

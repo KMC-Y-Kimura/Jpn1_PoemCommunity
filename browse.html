@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>詩を探す | 余白に詩を</title>
+    <meta
+      name="description"
+      content="詩を検索し、タグやジャンルで絞り込めるコミュニティサイトの一覧ページ"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css?v=20260624-5">
+  </head>
+  <body data-page="browse">
+    <div class="site-shell">
+      <header class="page-hero">
+        <p class="eyebrow">Browse</p>
+        <h1 id="site-name">詩を探す</h1>
+        <p id="site-tagline" class="hero__tagline">
+          タグを入力したり、よく使われるタグから選んだりして作品を探せます。
+        </p>
+      </header>
+
+      <nav class="topbar">
+        <div class="topbar__brand">
+          <p class="topbar__kicker">Community</p>
+          <strong>Poetry Board</strong>
+        </div>
+        <div class="topbar__links">
+          <a class="link-button" href="./index.html">ホーム</a>
+          <a class="link-button link-button--active" href="./browse.html">探す</a>
+          <a class="link-button" href="./compose.html">投稿</a>
+          <a class="link-button" href="./mypage.html">マイページ</a>
+        </div>
+        <div id="auth-actions" class="auth-actions">
+          <button class="button button--ghost" data-action="open-auth" type="button">ログイン</button>
+        </div>
+      </nav>
+
+      <main class="layout">
+        <section class="main-panel">
+          <section class="section-card section-card--filters">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Tag Search</p>
+                <h2>タグで探す</h2>
+              </div>
+            </div>
+            <div class="filter-grid">
+              <div class="field field--full">
+                <span>検索タグ</span>
+                <div class="tag-editor">
+                  <div id="browse-tag-list" class="tag-editor__list"></div>
+                  <input id="search-input" class="tag-editor__input" type="text" maxlength="20" placeholder="タグを入力して Enter">
+                </div>
+              </div>
+              <label class="field">
+                <span>並び順</span>
+                <select id="sort-filter">
+                  <option value="new">新しい順</option>
+                  <option value="popular">人気順</option>
+                </select>
+              </label>
+              <div class="scope-switch" id="scope-switch">
+                <button class="chip chip--active" data-scope="all" type="button">すべて</button>
+                <button class="chip" data-scope="mine" type="button">自分の作品</button>
+              </div>
+            </div>
+            <div class="active-filter-row">
+              <div id="active-filter-chip" class="active-filter-chip" hidden></div>
+              <button id="clear-tag-button" class="link-button" data-action="clear-tag" hidden>
+                タグ解除
+              </button>
+            </div>
+          </section>
+
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Poems</p>
+                <h2>詩の一覧</h2>
+              </div>
+            </div>
+            <div id="poem-grid" class="poem-grid">
+              <div class="empty-state">作品一覧を読み込んでいます...</div>
+            </div>
+          </section>
+        </section>
+
+        <aside class="side-panel">
+          <section id="browse-account-card" class="section-card">
+            <p class="section-copy">アカウント情報を読み込んでいます...</p>
+          </section>
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Tags</p>
+                <h2>よく使われるタグ</h2>
+              </div>
+            </div>
+            <div id="tag-cloud" class="tag-cloud"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="poem-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-poem-modal"></div>
+      <div class="modal__panel">
+        <button class="icon-button" data-action="close-poem-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="poem-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-auth-modal"></div>
+      <div class="modal__panel modal__panel--narrow">
+        <button class="icon-button" data-action="close-auth-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="auth-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack"></div>
+
+    <script type="module" src="js/app.js?v=20260624-8"></script>
+  </body>
+</html>

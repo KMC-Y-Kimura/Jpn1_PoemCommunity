@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>マイページ | 余白に詩を</title>
+    <meta
+      name="description"
+      content="ログイン状況、プロフィール、自分の作品を管理するページ"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css?v=20260624-5">
+  </head>
+  <body data-page="mypage">
+    <div class="site-shell">
+      <header class="page-hero">
+        <p class="eyebrow">My Page</p>
+        <h1 id="site-name">マイページ</h1>
+        <p id="site-tagline" class="hero__tagline">
+          ログイン状態、プロフィール、自分の作品を管理します。
+        </p>
+      </header>
+
+      <nav class="topbar">
+        <div class="topbar__brand">
+          <p class="topbar__kicker">Community</p>
+          <strong>Poetry Board</strong>
+        </div>
+        <div class="topbar__links">
+          <a class="link-button" href="./index.html">ホーム</a>
+          <a class="link-button" href="./browse.html">探す</a>
+          <a class="link-button" href="./compose.html">投稿</a>
+          <a class="link-button link-button--active" href="./mypage.html">マイページ</a>
+        </div>
+        <div id="auth-actions" class="auth-actions">
+          <button class="button button--ghost" data-action="open-auth" type="button">ログイン</button>
+        </div>
+      </nav>
+
+      <main class="layout">
+        <section class="main-panel">
+          <section id="profile-card" class="section-card">
+            <p class="section-copy">マイページを読み込んでいます...</p>
+          </section>
+        </section>
+
+        <aside class="side-panel">
+          <section class="section-card">
+            <div class="section-heading">
+              <div>
+                <p class="section-heading__eyebrow">Shortcuts</p>
+                <h2>移動</h2>
+              </div>
+            </div>
+            <div class="shortcut-list">
+              <a class="shortcut-card" href="./compose.html">
+                <strong>新しい詩を投稿</strong>
+                <span>投稿ページへ移動します。</span>
+              </a>
+              <a class="shortcut-card" href="./browse.html?scope=mine">
+                <strong>自分の作品を探す</strong>
+                <span>一覧ページで自作品だけを表示します。</span>
+              </a>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="poem-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-poem-modal"></div>
+      <div class="modal__panel">
+        <button class="icon-button" data-action="close-poem-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="poem-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="modal" hidden>
+      <div class="modal__backdrop" data-action="close-auth-modal"></div>
+      <div class="modal__panel modal__panel--narrow">
+        <button class="icon-button" data-action="close-auth-modal" type="button" aria-label="閉じる">
+          ×
+        </button>
+        <div id="auth-modal-body"></div>
+      </div>
+    </div>
+
+    <div id="toast-stack" class="toast-stack"></div>
+
+    <script type="module" src="js/app.js?v=20260624-8"></script>
+  </body>
+</html>
